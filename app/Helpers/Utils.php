@@ -29,11 +29,14 @@ class Utils
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => self::HeadersmLearn(),
         ));
+
         $response = curl_exec($curl);
         $err = curl_error($curl);
         curl_close($curl);
 
-        return $err ? ['success' => false, 'message' => $err, 'data' => []] :  ['success' => true, 'message' => '', 'data' => json_decode($response, true)];
+        $data = json_decode($response, true);
+
+        return $err || array_key_exists('status_code', $data) ? ['success' => false, 'message' => $err, 'data' => $data] :  ['success' => true, 'message' => '', 'data' => $data];
     }
 
     /**
@@ -66,7 +69,9 @@ class Utils
 
 
 
-        return $err ? ['success' => false, 'message' => $err, 'data' => []] :  ['success' => true, 'message' => '', 'data' => json_decode($response, true)];
+        $data = json_decode($response, true);
+
+        return $err || array_key_exists('status_code', $data) ? ['success' => false, 'message' => $err, 'data' => $data] :  ['success' => true, 'message' => '', 'data' => $data];
     }
 
     /**
@@ -84,6 +89,8 @@ class Utils
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 30000,
+            CURLOPT_SSL_VERIFYHOST => 0,
+            CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "PUT",
             CURLOPT_HTTPHEADER => self::HeadersmLearn(),
@@ -94,14 +101,16 @@ class Utils
 
         curl_close($curl);
 
-        return $err ? ['success' => false, 'message' => $err, 'data' => []] :  ['success' => true, 'message' => '', 'data' => json_decode($response, true)];
+        $data = json_decode($response, true);
+
+        return $err || array_key_exists('status_code', $data) ? ['success' => false, 'message' => $err, 'data' => $data] :  ['success' => true, 'message' => '', 'data' => $data];
     }
 
     static function ResponseJson($response, $statusCode = 200)
     {
-        if(is_string($response))
+        if(is_string($response) || (is_array($response) && !$response['success']))
         {
-            return response()->json(['data' => null, 'message' => $response, 'success' => false], 400);
+            return response()->json(['data' => $response, 'message' => $response, 'success' => false], 400);
         }
         return response()->json(['data' => $response['data'], 'message' => $response['message'], 'success' => true], $statusCode);
     }
