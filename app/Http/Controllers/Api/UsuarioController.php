@@ -30,12 +30,22 @@ class UsuarioController extends Controller
     function UpgradeUsuario($userId)
     {
         $response = $this->desafioService->UpgrademLearn($userId);
+        // SE RETORNOU COM SUCESSO, ATUALIZA NA BASE LOCAL
+        if($response['success'])
+        {
+            $this->desafioService->AtualizarUsuarioPormLearnId($userId, ['access_level' => $response['data']['data']['access_level']]);
+        }
         return Utils::ResponseJson($response);
     }
 
     function DowngradeUsuario($userId)
     {
         $response = $this->desafioService->DowngrademLearn($userId);
+        // SE RETORNOU COM SUCESSO, ATUALIZA NA BASE LOCAL
+        if($response['success'])
+        {
+            $this->desafioService->AtualizarUsuarioPormLearnId($userId, ['access_level' => $response['data']['data']['access_level']]);
+        }
         return Utils::ResponseJson($response);
     }
 }

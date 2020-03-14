@@ -41,6 +41,19 @@ class UsuarioRepository
         }
     }
 
+    function AtualizarUsuarioPormLearnId($id, $dados)
+    {
+        try {
+            $usuario =$this->userModel->where('mlearn_id', '=', $id)->first();
+            $usuario->fill($dados);
+            //dd([$dados, $empresa]);
+            $usuario->save();
+            return $usuario;
+        }catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
     function ListarUsuarios()
     {
         return $this->userModel->orderBy('name')->get();

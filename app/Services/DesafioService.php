@@ -94,7 +94,7 @@ class DesafioService
         return $response;
     }
 
-    private function AtualizarUsuario($id, $dados)
+    function AtualizarUsuario($id, $dados)
     {
         return $this->usuarioRepository->AtualizarUsuario($id, $dados);
     }
@@ -119,5 +119,10 @@ class DesafioService
     function UpgrademLearn($userId)
     {
         return Utils::ApiRequestPut(env('M_LEARN_API_URL').'/integrator/'.env('M_LEARN_SERVICE_ID').'/users/'.$userId.'/upgrade');
+    }
+
+    function AtualizarUsuarioPormLearnId($id, $dados)
+    {
+        return $this->usuarioRepository->AtualizarUsuarioPormLearnId($id, $dados);
     }
 }
