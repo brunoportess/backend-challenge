@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/usurio/cadastro', 'Api\UsuarioController@SalvarUsuario');
+Route::put('/usurio/up/{userId}', 'Api\UsuarioController@UpgradeUsuario');
+Route::put('/usurio/down/{userId}', 'Api\UsuarioController@DowngradeUsuario');
