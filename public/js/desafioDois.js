@@ -5,7 +5,7 @@ $(document).ready(function (){
         $('#btnSalvarUsuario').attr('disabled', true)
         axios.post('/api/usurio/cadastro', form).then(response => {
             alert('Cadastro efetuado com sucesso!')
-            $('#btnSalvarUsuario').attr('disabled', true)
+            $('#btnSalvarUsuario').attr('disabled', false)
             refresh()
         }).catch( error => {
             alert('Ocorreu um erro na tentativa de cadastro!')
@@ -27,4 +27,25 @@ $(document).ready(function (){
             window.location.reload()
         }, 500)
     }
+
+    $('.btnusuario').click(function () {
+        let idUsuario = $(this).data('idusuario')
+        console.log(idUsuario)
+        let tipoAcao = $(this).data('acao')
+        let url = '/api/usurio/down'
+        let texto = 'downgrade'
+        if(tipoAcao === 'up') {
+            url = '/api/usurio/up'
+            texto = 'upgrade'
+        }
+
+        axios.put(`${url}/${idUsuario}`).then(response => {
+            alert(`${texto} realizada com sucesso!`)
+            $('#btnSalvarUsuario').attr('disabled', false)
+            //refresh()
+        }).catch( error => {
+            alert(`Ocorreu um erro na tentativa de ${texto}!`)
+            $('#btnSalvarUsuario').attr('disabled', false)
+        })
+    })
 })

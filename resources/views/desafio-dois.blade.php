@@ -80,6 +80,7 @@
                                 <th>NOME</th>
                                 <th>NIVEL DE ACESSO</th>
                                 <th>TELEFONE CELULAR</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -97,6 +98,10 @@
                                         <td scope="row">{{$usuario->name}}</td>
                                         <td>{{$usuario->access_level}}</td>
                                         <td>{{$usuario->msisdn}}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary btnusuario" data-idusuario="{{$usuario->mlearn_id}}" data-acao="up"><img src="{{asset('icons/arrow-up-solid.png')}}" height="20px" /> Upgrade</button>
+                                            <button type="button" class="btn btn-danger btnusuario" data-idusuario="{{$usuario->mlearn_id}}" data-acao="down"><img src="{{asset('icons/arrow-down-solid.png')}}" height="20px" /> Downgrade</button>
+                                        </td>
                                     </tr>
                                 @endforeach
                             @endif

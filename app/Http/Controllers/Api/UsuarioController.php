@@ -26,4 +26,16 @@ class UsuarioController extends Controller
         $response = $this->desafioService->SalvarUsuario($dados);
         return Utils::ResponseJson($response);
     }
+
+    function UpgradeUsuario($userId)
+    {
+        $response = $this->desafioService->UpgrademLearn($userId);
+        return Utils::ResponseJson($response);
+    }
+
+    function DowngradeUsuario($userId)
+    {
+        $response = $this->desafioService->DowngrademLearn($userId);
+        return Utils::ResponseJson($response);
+    }
 }
