@@ -29,6 +29,10 @@
 
     XML PHP Extension
     
+- OBS: Caso esteja usando linux, para garantir a executar do comando **composer install** primeiramente instale algumas bibliotecas necessários com o seguinte comando:
+    
+        apt install php7.2-common php7.2-cli php7.2-gd php7.2-mysql php7.2-curl php7.2-intl php7.2-mbstring php7.2-bcmath php7.2-imap php7.2-xml php7.2-zip
+    
 - Para executar o projeto siga os seguintes passos:
 
     1 - Clone ou faça download do projeto
@@ -63,7 +67,7 @@
         php artisan config:cache
         php artisan view:clear
         
-    9 - Gere a base de dados com o comando:
+    9 - Crie o banco de dados, garantindo que o usuario/senha configurado tenham acsso a bse criada e em seguida gere as tabelas com o comando:
         
         php artisan migrate       
     
@@ -74,3 +78,5 @@
 -  Ambos os desafios foram feitos utilizando PHP e Jquery.
 
  - As requisições foram executadas via axios e o consumo da API da mLearn consumida utilizando cURL para evitar a dependência de biblioetca de terceiros
+ 
+
