@@ -7,6 +7,8 @@
 
     MariaDB ou MySQL
     
+    Composer
+    
     PHP >= 7.2.5
 
     BCMath PHP Extension
