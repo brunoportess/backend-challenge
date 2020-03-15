@@ -23,6 +23,10 @@ $(document).ready(function (){
     }
 
     function refresh() {
+        $('#msisdn').val('')
+        $('#access_level').val('')
+        $('#name').val('')
+        $('#password').val('')
         setTimeout(() => {
             window.location.reload()
         }, 500)
@@ -42,10 +46,11 @@ $(document).ready(function (){
         axios.put(`${url}/${idUsuario}`).then(response => {
             alert(`${texto} realizada com sucesso!`)
             $('#btnSalvarUsuario').attr('disabled', false)
-            //refresh()
+            refresh()
         }).catch( error => {
             alert(`Ocorreu um erro na tentativa de ${texto}!`)
             $('#btnSalvarUsuario').attr('disabled', false)
+            refresh()
         })
     })
 })
