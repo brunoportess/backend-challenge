@@ -79,4 +79,13 @@
 
  - As requisições foram executadas via axios e o consumo da API da mLearn consumida utilizando cURL para evitar a dependência de biblioetca de terceiros
  
-
+ 
+ ### Explicações relacionadas aos desafios
+ 
+####Desafio 1
+ - A matriz quadrada é gerada de forma randômica, ou seja, números aleatórios que a cada atualização da tela exibirá novos números e a diferença entre a soma de sua diagonal
+ - A quantidade de linhas/colunas na matriz pode ser alterada no arquivo DesafioController (linha 29)
+ 
+ ####Desafio 2
+ - Inicialmente é exibido a lista de usuários caso exista e um botão que abrirá uma janela modal para cadastro de novo usuário
+ - O upgrade/downgrade dos usuários é realizado através de botões exibidos na listagem ao final de cada linha. 
