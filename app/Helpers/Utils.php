@@ -6,6 +6,10 @@ namespace App\Helpers;
 
 class Utils
 {
+    // HEADERS PADRÕES PARA COMUNICAÇÃO DA API mLEARN
+    /**
+     * @return array
+     */
     static function HeadersmLearn()
     {
         return ['Authorization: Bearer aSE1gIFBKbBqlQmZOOTxrpgPKgQkgshbLnt1NS3w', 'service-id: qualifica', 'app-users-group-id: 20', 'Content-Type: application/json'];
@@ -106,6 +110,7 @@ class Utils
         return $err || array_key_exists('status_code', $data) ? ['success' => false, 'message' => $err, 'data' => $data] :  ['success' => true, 'message' => '', 'data' => $data];
     }
 
+    // METODO PARA PADRONIZAÇÃO DE RESPOSTAS DA API
     static function ResponseJson($response, $statusCode = 200)
     {
         if(is_string($response) || (is_array($response) && !$response['success']))

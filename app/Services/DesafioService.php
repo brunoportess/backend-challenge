@@ -26,6 +26,8 @@ class DesafioService
     function GerarMatrizQuadrada(int $tamanhoMatriz)
     {
         $matrizQuadrada = [];
+
+        // MONTA A MATRIZ QUADRADA COM BASE NO TAMANHO SOLICITADO
         for($x=0; $x < $tamanhoMatriz; $x++)
         {
             $matrizQuadrada[$x] = [];
@@ -46,9 +48,11 @@ class DesafioService
     function SomaDiagonalMatrizQuadrada($matriz)
     {
         $diagonalEsqDir = $diagonalDirEsq = 0;
+        // REDUZ -1 DEVIDO AO ARRAY INICIAR EM 0 (ZERO)
         $tamanhoMatriz = count($matriz) - 1;
         $aux = 0;
 
+        // PERCORRE A MATRIZ PARA SOMAR OS VALORES DAS DIAGONAIS
         foreach ($matriz as $key => $value)
         {
             $diagonalEsqDir += $matriz[$aux][$aux];
@@ -77,7 +81,6 @@ class DesafioService
         $dados['msisdn']  = '+55'.preg_replace( '/[^0-9]/', '', $dados['msisdn'] );
         // SALVA O USUARIO NA BASE DE DADOS DA APLICACOA
         $response = $this->usuarioRepository->SalvarUsuario($dados);
-        //return $response;
         // SE FOR STRING ESTA RETORNANDO A MENSAGEM DE ERRO DO BANCO
         // CASO CONTRARIO ESTA RETORNANDO O OBJETO DE SUCESSO DA INSEÇÃO
         if(is_string($response))
@@ -111,16 +114,19 @@ class DesafioService
         return Utils::ApiRequestPost(env('M_LEARN_API_URL').'/integrator/'.env('M_LEARN_SERVICE_ID').'/users', $usuario);
     }
 
+    // REQUISITA DOWNGRADE NO NIVEL DE ACESSO
     function DowngrademLearn($userId)
     {
         return Utils::ApiRequestPut(env('M_LEARN_API_URL').'/integrator/'.env('M_LEARN_SERVICE_ID').'/users/'.$userId.'/downgrade');
     }
 
+    // REQUISITA UPGRADE NO NIVEL DE ACESSO
     function UpgrademLearn($userId)
     {
         return Utils::ApiRequestPut(env('M_LEARN_API_URL').'/integrator/'.env('M_LEARN_SERVICE_ID').'/users/'.$userId.'/upgrade');
     }
 
+    // ATUALIZA DADOS DO USUARIO NA BASE LOCAL COM REFERÊNCIA AO ID DA BASE DA mLEARN
     function AtualizarUsuarioPormLearnId($id, $dados)
     {
         return $this->usuarioRepository->AtualizarUsuarioPormLearnId($id, $dados);
