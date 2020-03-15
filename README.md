@@ -1,42 +1,74 @@
 # Desafio back-end da mLearn
 
-Esse repositório é o nosso desafio para avaliar o quão bom desenvolvedor back-end você é.
+<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-Provavelmente você já está participando do nosso processo seletivo, mas se você caiu aqui por acaso, leia o documento até o final e caso haja interesse, você pode começar daqui mesmo.
+- Sistema criado com Laravel 7.
+- Para garantir o funcionamento do projeto caso não esteja usando Homestead, tenha certeza que está seguindo os seguintes requerimento em sua máquina:
 
+    MariaDB ou MySQL
+    
+    PHP >= 7.2.5
 
-## Sobre o desafio
+    BCMath PHP Extension
 
-Esse é um desafio, não um teste ou uma prova de faculdade, portanto não há uma única resposta certa.
+    Ctype PHP Extension
 
-Daremos a você alguns requisitos que devem ser cumpridos, e pelos quais você será avaliado, mas deixamos livre a escolha do método de solução.
+    Fileinfo PHP extension
 
-O que nós esperamos aprender sobre você com o desafio:
+    JSON PHP Extension
 
-- Seu estilo de trabalho
-- Como você pensa e resolve problemas
-- Como você se comunica
+    Mbstring PHP Extension
 
-O que nós esperamos que você aprenda sobre a mLearn:
+    OpenSSL PHP Extension
 
-- Como nós trabalhamos como um time.
-- Tenha uma visão próxima dos desafios que enfrentamos no dia-a-dia.
+    PDO PHP Extension
 
-## Próximos passos
+    Tokenizer PHP Extension
 
-1. Faça um _fork_ desse repositório para sua conta pessoal.
-2. As instruções do desafio se encontram no arquivo [`CHALLENGE.md`](/CHALLENGE.md).
-2. Resolva o desafio da forma que você julgar mais adequada.
-3. Utilize uma _branch_ nomeada com o formato (`nome-sobrenome`) para o desenvolvimento. E submeta o _pull-request_ para essa mesma _branch_.
+    XML PHP Extension
+    
+- Para executar o projeto siga os seguintes passos:
 
-## Considerações
+    1 - Clone ou faça download do projeto
+    
+    2 - Acesse a pasta do projeto
+    
+    3 - Faça a instalação das bibliotecas do projeto com o comando abaixo 
+        
+        composer install
+    
+    4 - Crie uma cópia do arquivo **.env.example** com o nome **.env**
+    
+        Windows: copy .env.example .env
+        Linux: cp .env.example .env
+    
+    5 - No arquivo **.env** configure as variáveis de conexão do banco de dados
+    
+        DB_HOST = Ip/Hostname do servidor de banco de dados (ex: 127..0.0.1)
+        DB_PORT = Porta de comuicação com banco de dados (padrão: 3306)
+        DB_DATABASE = Nome do banco de dados (ex: desafio_bruno_portes)
+        DB_USERNAME = Nome de usuário para conectar no banco de dados
+        DB_PASSWORD = Senha do usuário de conexão do banco de dados
+    
+    6 - Gere uma nova chave para a aplicação com o comand **php artisan key:generate** 
+    
+    7 - Esteja conectado na internet, pois é utilizado algumas biblioetcas via CDN
+    
+    8 - Para evitar quaisquer problema na execução do projeto, execute os comandos de limpeza de cache
+        
+        php artisan route:cache
+        php artisan cache:clear
+        php artisan config:cache
+        php artisan view:clear
+        
+    9 - Gere a base de dados com o comando:
+        
+        php artisan migrate       
+    
+    10 - Inicie a aplicação com o comando:
+    
+        php artisan serve
+        
+-  Ambos os desafios foram feitos utilizando PHP e Jquery.
 
-- Nós não iremos limitar a sua escolha por ferramentas e bibliotecas. Porém faça escolhas que sejam condizentes com o desafio apresentado. Para que utilizar uma bazuca para matar uma formiga?
-- O tempo sugerido para execução do teste é  de **2 horas e meia**.
-- Tente escrever o melhor código possível para que possamos avaliar o seu _pull-request_ com mais facilidade. E lembre-se: Você vai ter que explicar pessoalmente para nós depois.
-
-## Dúvidas?
-
-Ficou com alguma dúvida sobre como irá funcionar o processo? Entre em contato que nós te ajudaremos com o processo.
-
-**Boa sorte!**
+ - As requisições foram executadas via axios e o consumo da API da mLearn consumida utilizando cURL para evitar a dependência de biblioetca de terceiros
