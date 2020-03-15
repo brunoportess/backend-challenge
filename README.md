@@ -29,10 +29,24 @@
 
     XML PHP Extension
     
-- OBS: Caso esteja usando linux, para garantir a executar do comando **composer install** primeiramente instale algumas bibliotecas necessários com o seguinte comando:
+    
+##### OBS: Caso esteja usando linux, para garantir a executar do comando **composer install** primeiramente instale algumas bibliotecas necessários com o seguinte comando:
     
         apt install php7.2-common php7.2-cli php7.2-gd php7.2-mysql php7.2-curl php7.2-intl php7.2-mbstring php7.2-bcmath php7.2-imap php7.2-xml php7.2-zip
+        
+##### OBS 2: Foi constatado que ao utilizar o banco MariaDB no Linux e criado a base de dados, possa vir ocorrer um problema de permissão de acesso ao novo banco caso use o usuario *root*. Caso ocorra, será necessário executar os seguintes comando:
+
+        sudo mysql -u rott -p
+        (informe a senha caso seja solicitado)
+        use mysql;
+        update user set plugin='' where User='root';
+        flush privileges;
+        exit;
     
+    
+###Instruções
+
+
 - Para executar o projeto siga os seguintes passos:
 
     1 - Clone ou faça download do projeto
